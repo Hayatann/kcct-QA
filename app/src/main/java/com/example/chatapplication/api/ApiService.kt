@@ -13,15 +13,15 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("getchats")
-    suspend fun fetchChatList(@Query("groupId")groupId: Int):Response<List<ChatApiEntity>>
+    @GET("chats")
+    suspend fun fetchChatList(@Query("group_id")groupId: Int):Response<List<ChatApiEntity>>
 
-    @GET("getgroups")
+    @GET("groups")
     suspend fun fetchGroupList():Response<List<GroupApiEntity>>
 
-    @GET("getusers")
+    @GET("users")
     suspend fun fetchUsers():Response<List<UserApiEntity>>
 
-    @POST("post")
+    @POST("chats")
     suspend fun postChat(@Body chat: ChatApiEntity):Response<ChatApiEntity>
 }

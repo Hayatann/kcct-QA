@@ -11,7 +11,7 @@ import javax.net.ssl.X509TrustManager
 
 object ApiClientProvider {
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://172.16.1.49:8000/")
+        .baseUrl("https://kcctqabackend.r121317.workers.dev/api/")
         .client(getUnsafeOkHttpClient())
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())

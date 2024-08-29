@@ -8,8 +8,8 @@ data class ChatApiEntity(
     val groupId: Int,
     val senderId: Int,
     val senderName: String,
-    val dateTime: String,
     var message: String,
+    val createdAt: String
 )
 
 fun List<ChatApiEntity>.convertUIData(): ArrayList<ChatData> {
@@ -22,7 +22,7 @@ fun List<ChatApiEntity>.convertUIData(): ArrayList<ChatData> {
                 groupId = it.groupId,
                 senderId = it.senderId,
                 senderName = it.senderName,
-                dateTime = LocalDateTime.parse(it.dateTime, formatter),
+                dateTime = LocalDateTime.parse(it.createdAt, formatter),
                 message = it.message,
                 isOwnMessage = it.senderId == 1 || it.groupId == 1
             )

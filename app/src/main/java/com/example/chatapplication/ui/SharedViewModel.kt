@@ -51,12 +51,17 @@ class SharedViewModel : ViewModel() {
                 if (res.isSuccessful) {
                     val groupApiEntity = res.body() ?: emptyList()
                     _groupList.value = groupApiEntity.convertUIData()
+                } else {
+                    // レスポンスが成功しなかった場合の処理
+                    Log.e("SharedViewModel", "API call failed with code: ${res.code()} and message: ${res.message()}")
                 }
             } catch (e: Exception) {
-                Log.e("SharedViewModel", e.message ?: "")
+                // より詳細なエラーログ
+                Log.e("SharedViewModel", "Error fetching group list", e)
             }
         }
     }
+
 
     fun fetchUserList() {
         viewModelScope.launch {

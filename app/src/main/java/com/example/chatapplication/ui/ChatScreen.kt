@@ -57,12 +57,16 @@ fun ChatScreen(
 //    val userOptions = sampleUserData.map { it.name }
 
 
+//    LaunchedEffect(Unit) {
+//        while(true) {
+//            viewModel.fetchChatList()
+//            viewModel.fetchUserList()
+//            delay(1000L)
+//        }
+//    }
     LaunchedEffect(Unit) {
-        while(true) {
-            viewModel.fetchChatList()
-            viewModel.fetchUserList()
-            delay(1000L)
-        }
+        viewModel.fetchChatList()
+        viewModel.fetchUserList()
     }
 
 
@@ -75,6 +79,7 @@ fun ChatScreen(
                 }
                 Button(onClick = {
                     viewModel.fetchChatList()
+                    viewModel.fetchUserList()
                 }) {
                     Icon(Icons.Filled.Refresh, contentDescription = "")
                 }
@@ -171,7 +176,7 @@ fun SendingTextField(
                                     groupId = groupId.value,
                                     senderId = selectedUserId,
                                     senderName = selectedUserName,
-                                    dateTime = LocalDateTime.now().toString(),
+                                    createdAt = LocalDateTime.now().toString(),
                                     message = text
                                 ),
                             )

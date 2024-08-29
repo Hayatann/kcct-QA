@@ -7,7 +7,8 @@ data class GroupApiEntity(
     val id: Int,
     val name: String,
     val lastMessage: String,
-    val lastMessageTime: String,
+    val lastMessageAt: String,
+    val createdAt: String
 )
 
 fun List<GroupApiEntity>.convertUIData(): ArrayList<GroupData> {
@@ -19,7 +20,7 @@ fun List<GroupApiEntity>.convertUIData(): ArrayList<GroupData> {
                 id = it.id,
                 name = it.name,
                 lastMessage = it.lastMessage,
-                lastMessageTime = LocalDateTime.parse(it.lastMessageTime, formatter)
+                lastMessageTime = LocalDateTime.parse(it.lastMessageAt, formatter)
             )
         )
     }
